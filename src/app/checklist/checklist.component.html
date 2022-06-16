@@ -1,6 +1,6 @@
-<div class="option-container" *ngIf="question.type==='checklist'">
-    <div class="" *ngFor="let option of question.options">
-        <input type="checkbox" [id]="option" />
-        <label [for]="option">{{option}}</label>
+<div class="card-content" *ngIf="question.type==='checklist'">
+    <div *ngFor="let option of question.options" class="checkbox checklist-container">
+        <input [id]="option" type="checkbox" />
+        <label [for]="option" class="is-size-5 ml-2">{{ option }}</label>
     </div>
 </div>

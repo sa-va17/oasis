@@ -3,10 +3,10 @@
   <app-question-detail (newQuestion)="addQuestionToList($event)"></app-question-detail>
   <div class="card mt-6" *ngFor="let question of questionList">
 
-    <h3 class="is-size-4 p-2">{{question.title}}</h3>
+    <h3 class="is-size-4 card-content has-text-weight-bold">{{question.title}}</h3>
 
-    <app-dropdown [question]="question"></app-dropdown>
-    <app-checklist [question]="question"></app-checklist>
+    <app-dropdown *ngIf="question.type === 'dropdown'" [question]="question"></app-dropdown>
+    <app-checklist *ngIf="question.type === 'checklist'" [question]="question"></app-checklist>
   </div>
 
 </form>
