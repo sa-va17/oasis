@@ -1,0 +1,6 @@
+<div class="option-container" *ngIf="question.type==='checklist'">
+    <div class="" *ngFor="let option of question.options">
+        <input type="checkbox" [id]="option" />
+        <label [for]="option">{{option}}</label>
+    </div>
+</div>

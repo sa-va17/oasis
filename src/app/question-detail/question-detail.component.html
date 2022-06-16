@@ -1,0 +1,49 @@
+<form class="card" *ngIf="showQuestionForm">
+    <header class="card-header">
+        <p class="card-header-title">
+            Add a question:
+        </p>
+
+    </header>
+    <div class="card-content question-add-card">
+        <input class="content input" type="text" [(ngModel)]="questionDetail.title" name="addQuestion"
+            placeholder="Enter a question" />
+        <div class="select">
+            <select name="selectType" [(ngModel)]="questionDetail.type">
+                <option value="" [defaultSelected]="true" disabled>Select type</option>
+                <option value="dropdown">Dropdown</option>
+                <option value="checklist">Checklist</option>
+            </select>
+        </div>
+    </div>
+    <div class="card-content" *ngIf="questionDetail.type.length > 0">
+        <ng-container *ngIf="questionDetail.type === 'dropdown'">
+            <input class="input mb-1" *ngFor="let option of questionDetail.options" [value]="option" disabled
+                type="text" />
+        </ng-container>
+        <ng-container *ngIf="questionDetail.type === 'checklist'">
+            <label *ngFor="let option of questionDetail.options" class="checkbox center mb-1">
+                <input type="checkbox" disabled />
+                <input type="text" class="input" [value]="option" disabled />
+            </label>
+        </ng-container>
+
+        <div class="add-new-option center">
+            <input *ngIf="questionDetail.type==='dropdown'" class="input" name="optionDropdown" [(ngModel)]="newOption"
+                placeholder="Enter Value" />
+            <label *ngIf="questionDetail.type==='checklist'" class="checkbox center input-checkbox">
+                <input type="checkbox" />
+                <input type="text" class="input input-checkbox" name="optionChecklist" [(ngModel)]="newOption"
+                    placeholder="Enter Value" />
+            </label>
+            <button class="button is-primary" (click)="addOption()">
+                +
+            </button>
+        </div>
+
+    </div>
+    <footer class="card-footer">
+        <button class="button card-footer-item" (click)="onSave()">Save</button>
+    </footer>
+</form>
+<button class="button is-info my-4" (click)="addQuestion()">Add Question</button>

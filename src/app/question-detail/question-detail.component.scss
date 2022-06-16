@@ -1,0 +1,21 @@
+.question-add-card {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-new-option {
+    justify-content: flex-start;
+}
+
+.input-checkbox {
+    width: 100%;
+}
