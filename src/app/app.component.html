@@ -1,10 +1,12 @@
 <h1 class="is-size-2 has-text-centered my-6"> Create a form </h1>
-<form class="container">
-  <div *ngFor="let question of questionList">
-    <p class="is-size-4">{{question.title}}</p>
+<form class="app-container">
+  <app-question-detail (newQuestion)="addQuestionToList($event)"></app-question-detail>
+  <div class="card mt-6" *ngFor="let question of questionList">
+
+    <h3 class="is-size-4 p-2">{{question.title}}</h3>
+
     <app-dropdown [question]="question"></app-dropdown>
     <app-checklist [question]="question"></app-checklist>
   </div>
-  <app-question-detail (newQuestion)="addQuestionToList($event)"></app-question-detail>
 
 </form>

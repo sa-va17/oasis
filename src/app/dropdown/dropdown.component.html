@@ -1,3 +1,5 @@
-<select class="option-container" *ngIf="question.type === 'dropdown'">
-    <option *ngFor="let option of question.options">{{option}}</option>
-</select>
+<div class="select m-2 mb-4">
+    <select class="option-container" *ngIf="question.type === 'dropdown'">
+        <option *ngFor="let option of question.options">{{option}}</option>
+    </select>
+</div>

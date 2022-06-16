@@ -17,7 +17,6 @@ export class QuestionDetailComponent implements OnInit {
   }
 
   newOption: string = "";
-  showQuestionForm = false;
 
   constructor() { }
 
@@ -37,9 +36,5 @@ export class QuestionDetailComponent implements OnInit {
       this.questionDetail.options.push(this.newOption)
       this.newOption = ""
     }
-  }
-
-  addQuestion() {
-    this.showQuestionForm = true
   }
 }
