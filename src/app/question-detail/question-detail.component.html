@@ -1,4 +1,4 @@
-<form class="card">
+<form class="card m-5">
     <header class="card-header">
         <p class="card-header-title">
             Add a question:
@@ -6,13 +6,12 @@
 
     </header>
     <div class="card-content question-add-card">
-        <input class="content input" type="text" [(ngModel)]="questionDetail.title" name="addQuestion"
-            placeholder="Enter a question" />
+        <input class="content input" type="text" [(ngModel)]="questionDetail.title" [value]="questionDetail.title"
+            name="addQuestion" placeholder="Enter a question" />
         <div class="select">
             <select name="selectType" [(ngModel)]="questionDetail.type">
-                <option value="" [defaultSelected]="true" disabled>Select type</option>
-                <option value="dropdown">Dropdown</option>
-                <option value="checklist">Checklist</option>
+                <option value="dropdown" [defaultSelected]="questionDetail.type === 'dropdown'">Dropdown</option>
+                <option value="checklist" [defaultSelected]="questionDetail.type === 'checklist'">Checklist</option>
             </select>
         </div>
     </div>
@@ -42,7 +41,7 @@
         </div>
 
     </div>
-    <footer class="card-footer">
-        <button class="button card-footer-item" (click)="onSave()">Save</button>
-    </footer>
 </form>
+<div class="center m-2" *ngIf="isShow">
+    <button class="button" (click)="onSave()">Add Another question</button>
+</div>

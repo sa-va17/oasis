@@ -1,12 +1,19 @@
-<h1 class="is-size-2 has-text-centered my-6"> Create a form </h1>
+<div class="header">
+  <h1 class="is-size-2 has-text-centered my-6"> Create a form </h1>
+  <button (click)="viewForm()" class="button is-success">Save Form</button>
+</div>
 <form class="app-container">
-  <app-question-detail (newQuestion)="addQuestionToList($event)"></app-question-detail>
-  <div class="card mt-6" *ngFor="let question of questionList">
-
-    <h3 class="is-size-4 card-content has-text-weight-bold">{{question.title}}</h3>
-
-    <app-dropdown *ngIf="question.type === 'dropdown'" [question]="question"></app-dropdown>
-    <app-checklist *ngIf="question.type === 'checklist'" [question]="question"></app-checklist>
-  </div>
-
+  <ng-container *ngIf="!viewSavedForm">
+    <app-question-detail (viewForm)="addQuestionToList($event)"></app-question-detail>
+    <app-question-detail *ngFor="let question of questionList" [questionDetail]="question"
+      (viewForm)="addQuestionToList($event)">
+    </app-question-detail>
+  </ng-container>
+  <ng-container *ngIf="viewSavedForm">
+    <div class="card mt-6" *ngFor="let question of questionList">
+      <h3 class="is-size-4 card-content has-text-weight-bold">{{question.title}}</h3>
+      <app-dropdown *ngIf="question.type === 'dropdown'" [question]="question"></app-dropdown>
+      <app-checklist *ngIf="question.type === 'checklist'" [question]="question"></app-checklist>
+    </div>
+  </ng-container>
 </form>

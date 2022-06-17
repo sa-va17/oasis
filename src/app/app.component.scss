@@ -3,3 +3,11 @@
     margin: auto;
 
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    width: max(400px, 60%);
+}
